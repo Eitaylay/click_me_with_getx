@@ -22,7 +22,7 @@ class LeaderboardPage extends StatelessWidget {
           children: [
             const Text('Your result'),
             Text(
-              result > 0 ? '+$result' : "$result",
+              result < 0 ? '$result' : "+$result",
               style: TextStyle(
                 fontSize: 100,
                 color: result >= 100
@@ -33,19 +33,24 @@ class LeaderboardPage extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
-            if (result >= 100)
+            if (result < -20 && result < 0)
               Text(
-                'Wow! You are a celebrity 😳',
+                'Sorry! You have many haters 🥺',
                 style: Theme.of(context).textTheme.titleLarge,
               ),
-            if (result > 0 && result < 100)
+            if (result <= 0 && result > -20)
+              Text(
+                'Not so bad😐',
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
+            if (result > 0 && result < 20)
               Text(
                 'You are good!😊',
                 style: Theme.of(context).textTheme.titleLarge,
               ),
-            if (result <= 0)
+            if (result > 80)
               Text(
-                'Sorry! You have many haters 🥺',
+                'Wow! You are a celebrity 😳',
                 style: Theme.of(context).textTheme.titleLarge,
               ),
             const SizedBox(
@@ -54,7 +59,9 @@ class LeaderboardPage extends StatelessWidget {
             FilledButton(
               onPressed: () {
                 Get.find<ReactionController>().resetValues();
-                Get.offAllNamed('/');
+                Get.offAllNamed(
+                  '/',
+                );
               },
               child: const Text('Restart'),
             ),
