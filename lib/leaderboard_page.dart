@@ -38,7 +38,7 @@ class LeaderboardPage extends StatelessWidget {
                 'Wow! You are a celebrity 😳',
                 style: Theme.of(context).textTheme.titleLarge,
               ),
-            if (result > 0)
+            if (result > 0 && result < 100)
               Text(
                 'You are good!😊',
                 style: Theme.of(context).textTheme.titleLarge,
