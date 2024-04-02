@@ -7,6 +7,9 @@ class ReactionController extends GetxController {
   var loveCounter = 0.obs;
   var unlikeCounter = 0.obs;
 
+  int get result =>
+      (likeCounter.value + loveCounter.value) - unlikeCounter.value;
+
   void increaseLike() {
     likeCounter.value++;
   }

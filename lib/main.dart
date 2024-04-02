@@ -1,9 +1,7 @@
-import 'package:click_me_with_getx/routes.dart';
-import 'package:get/route_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'controller_binding.dart';
-import 'domain/reaction_controller.dart';
+import 'package:click_me_with_getx/routes.dart';
+import 'package:click_me_with_getx/controller_binding.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,7 +10,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
@@ -21,11 +18,9 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      initialBinding: ControllerBinding(),
-      initialRoute: '/',
-      onGenerateRoute: (settings) {
-        return RouteGenerator.generateRoute(settings);
-      },
+      initialBinding: ControllerBinding(), // optional binding
+      getPages: AppRoute.routes,
+      unknownRoute: AppRoute.unknownRoute,
     );
   }
 }
